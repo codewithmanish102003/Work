@@ -1,0 +1,302 @@
+* {
+    margin: 0px;
+    padding: 0px;
+
+}
+
+body {
+    background-color: black;
+}
+
+.main {
+    background-image: url(https://assets.nflxext.com/ffe/siteui/vlv3/21a8ba09-4a61-44f8-8e2e-70e949c00c6f/6678e2ea-85e8-4db2-b440-c36547313109/IN-en-20240722-POP_SIGNUP_TWO_WEEKS-perspective_WEB_3457a8b1-284d-4bb5-979e-2a2e9bb342b3_large.jpg);
+    height: 100vh;
+    background-position: center center;
+    background-size: max(1450px, 125vw);
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.main .box {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.69;
+    position: absolute;
+    top: 0%;
+    /* z-index: -1; */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 75vw;
+    margin: auto;
+    height: 75px;
+}
+
+nav img {
+    width: 150px;
+    color: red;
+    position: relative;
+    z-index: 10;
+}
+
+
+nav button {
+    position: relative;
+    z-index: 10;
+}
+
+.hero {
+    height: calc(100% - 75px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    position: relative;
+    gap: 23px;
+    padding: 0 30px;
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+.hero> :first-child {
+    font-size: 48px;
+    font-weight: bolder;
+    /* line-height: normal; */
+    text-align: center;
+}
+
+.hero> :nth-child(2) {
+    font-size: 24px;
+    font-weight: 400;
+    /* line-height: normal; */
+    text-align: center;
+}
+
+.hero> :nth-child(3) {
+    font-size: 20px;
+    font-weight: 400;
+    /* line-height: 30px; */
+    text-align: center;
+}
+
+.sepration {
+    height: 7px;
+    background-color: rgb(56, 56, 56);
+    z-index: 1;
+
+}
+
+.btn {
+    padding: 8px 12px;
+    font-weight: 600;
+    color: white;
+    border-radius: 5px;
+    background-color: rgba(234, 220, 220, 0.118);
+    cursor: pointer;
+}
+
+.sel-btn {
+    background-color: rgba(234, 220, 220, 0);
+    border: none;
+}
+
+.btn-red-sm {
+    background-color: red;
+    color: white;
+}
+
+.btn-red {
+    background-color: red;
+    color: white;
+    padding: 15px 30px;
+    font-size: 20px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.main input {
+    color: rgb(255, 255, 255);
+    padding: 16px 215px 18px 16px;
+    font-size: 15px;
+    border: 2px solid rgba(107, 103, 103, 0.214);
+    border-radius: 5px;
+    background-color: rgba(107, 103, 103, 0.214);
+}
+
+.main input::placeholder{
+    width: 100%;
+}
+
+.hero-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+}
+
+.first {
+    display: flex;
+    margin: auto;
+    max-width: 75vw;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    height: 85vh;
+}
+
+.secImg {
+    position: relative;
+}
+
+.secImg img {
+    width: 31vw;
+    position: relative;
+    z-index: 10;
+    top: 10px;
+    margin-bottom: 10px
+}
+
+.secImg video {
+    position: absolute;
+    top: 70px;
+    right: 0px;
+    width: 27vw;
+}
+
+section.first>div :nth-child(1) {
+    font-family: sans-serif;
+    font-weight: 900;
+    Color: rgb(255, 255, 255) ;
+    font-size: 48px ;
+    line-height: normal;
+}
+
+section.first>div :nth-child(2) {
+    font-family: sans-serif;
+    font-weight: 400;
+    Color: rgb(255, 255, 255) ;
+    font-size: 24px ;
+    line-height: normal;
+}
+
+.faq{
+    background-color: black;
+    color:white;
+    padding: 34px;
+
+
+}
+
+.faq h2{
+    font-family: sans-serif;
+    font-weight: 900;
+    text-align: center;
+    font-size: 48px;
+}
+
+.faqbox svg{
+    filter: invert(1);
+}
+.faqbox{
+
+transition: all 0.5s ease-out;
+    display: flex;
+    background-color: #2d2d2d;
+    padding: 28px;
+    max-height: 100px;
+    max-width: 72vw;
+    margin:10px auto;
+    justify-content: space-between;
+    font-size: 24px;
+    font-weight: 400;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+
+
+.faqbox:hover{
+    background-color:rgba(254, 254, 254, 0.299);
+    color: white;
+}
+
+.faq input{
+    color: rgb(255, 255, 255);
+    padding: 16px 215px 18px 16px;
+    font-size: 15px;
+    border: 2px solid rgba(107, 103, 103, 0.214);
+    border-radius: 5px;
+    background-color: rgba(107, 103, 103, 0.214);
+}
+
+.prelog{
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 40px;
+        text-align: center; /* This will center the text horizontally */
+        margin: 0 auto; /* This will center the block horizontally */
+        margin-bottom: 10px;
+        display: block; /* Make sure it's a block-level element */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between; /* Distribute content evenly */
+    align-items: center; /* Vertically align items */
+    padding: 60px 180px;
+    background-color: hsl(0, 100%, 1%); /* Black background */
+    margin: 0 auto;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.footer-link {
+    font-family:"Netflix Sans", "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+    text-decoration: underline;
+    color: 
+    rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+
+.footer-copyright {
+    font-family:"Netflix Sans", "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 0px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+
+
+@media (max-width: 600px) {
+    .first {
+        display: block;
+        margin: auto;
+        max-width: 75vw;
+        justify-content: center;
+        color: white;
+        align-items: center;
+        height: 85vh;
+    }
+
+    .first:first-child{
+        text-align: center;
+    }
+
+}

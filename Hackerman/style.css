@@ -1,0 +1,61 @@
+body {
+    background-color: black;
+    color: green;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+#text {
+   
+    background-color: black;
+    color:green;
+    border: 2px solid green;
+    padding: 30px;
+    width: 80%;
+    height: 80%;
+    overflow-y: auto;
+    font-size: 25px;
+    
+}
+input{
+    border-radius: 4px;
+}
+input:focus{
+    background-color: black;
+    color: green;
+}
+#btn{
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#btn:hover{
+    animation: ease-out 0.1s;
+    color: green;
+    background-color: black;
+}
+
+.line {
+    margin: 5px 0;
+}
+
+.cursor {
+    display: inline-block;
+    width: 10px;
+    background-color: green;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50%, 100% {
+        opacity: 1;
+    }
+    25%, 75% {
+        opacity: 0;
+    }
+}
