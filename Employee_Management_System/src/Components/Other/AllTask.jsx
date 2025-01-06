@@ -1,10 +1,6 @@
-
 import React, { useContext } from 'react';
 import { fetchUserData } from '../../services/api';
 import { useEffect, useState } from 'react';
-
-
-
 
 const AllTask = () => {
   const [users, setUsers] = useState([]);
