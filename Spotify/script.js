@@ -15,8 +15,10 @@ function secondsToMinutesSeconds(seconds) {
     return `${formattedMinutes}:${formattedSeconds}`;
 }
 
+
+// D:\Work\Spotify\Songs
 async function getSongs() {
-    let a = await fetch("http://127.0.0.1:5501/Projects/Spotify/Songs/")
+    let a = await fetch("http://127.0.0.1:5500/Spotify/Songs/")
 
     let response = await a.text()
 
@@ -38,7 +40,7 @@ async function getSongs() {
 document.getElementById("play").disabled = false;
 
 const playMusic = (track, pause = false) => {
-    currentSong.src = "http://127.0.0.1:5501/Projects/Spotify/Songs/" + track
+    currentSong.src = "http://127.0.0.1:5500/Spotify/Songs/" + track
     if (!pause) {
         currentSong.play()
         play.src = "pause.svg"
