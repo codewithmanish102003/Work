@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (key === 'Enter') {
             calculate();
         } else if (key === 'Backspace') {
-            string = string.slice(0, -1);
+            string=string.substring(0,string.length-1)
             input.value = string;
         } else if (key === 'Escape') {
             clearInput();
