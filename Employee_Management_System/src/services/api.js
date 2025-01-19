@@ -83,6 +83,9 @@ export const forgotPassword = async (userData) => {
     return response.data;
   } catch (error) {
     console.error('Error sending reset email:', error);
+    if (error.response) {
+      console.error('Error response:', error.response.data);
+    }
     throw error;
   }
 };
