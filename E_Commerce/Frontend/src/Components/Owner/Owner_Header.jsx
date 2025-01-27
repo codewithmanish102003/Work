@@ -7,7 +7,7 @@ const Owner_Header = () => {
         <h3 className="text-xl">💫wayCollections</h3>
         <div className="flex gap-5">
             <a className="block w-fit mb-2" href="/owners/all-products">All Products</a>
-            <a href="/owner-profile">My Account</a>
+            <a href="/owner-profile">Account</a>
             <a className="text-red-600" href="/user/logout">Logout</a>
         </div>
     </nav>

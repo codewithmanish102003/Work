@@ -22,13 +22,13 @@ const Owner_Register = () => {
                 </div>
                 <div className="w-1/2 mt-[-100px]"> 
                     <img className="w-[80%]"
-                        src="529a37a2-4db1-4213-afb8-d18294c695e9.png"
+                        src="../public/529a37a2-4db1-4213-afb8-d18294c695e9.png"
                         alt="starway collections logo"
                     />
                 </div>
             </div>
             <div className="flex justify-center items-center mt-[-100px]">
-                <p>Already have an Account?? <a className="text-blue-700" href="/">Login</a></p>
+                <p>Already have an Account?? <a className="text-blue-700" href="/login">Login</a></p>
             </div>
         </div>
     )

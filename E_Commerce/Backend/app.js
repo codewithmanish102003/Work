@@ -29,10 +29,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
 // Base Router
-app.use('/', indexRouter);
-app.use('/owners', ownersRouter);
-app.use('/user', userRouter);
-app.use('/products', productRouter);
+app.use('api/', indexRouter);
+app.use('api/owners', ownersRouter);
+app.use('api/user', userRouter);
+app.use('api/products', productRouter);
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');

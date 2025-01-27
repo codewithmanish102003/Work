@@ -22,7 +22,7 @@ const Login = () => {
                                 <input className="px-5 rounded-full py-3 mt-2 bg-blue-500 text-white cursor-pointer" type="submit"
                                     value="Create My Account" />
                                 <div className="px-5 rounded-full py-3 mt-2 bg-blue-500 text-white">
-                                    <a href="owners/admin-register">Register As Owner</a>
+                                    <a href="login/owner_register">Register As Owner</a>
                                 </div>
                             </div>
                         </form>
