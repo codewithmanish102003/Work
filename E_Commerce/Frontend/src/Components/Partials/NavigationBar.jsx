@@ -35,7 +35,7 @@ const NavigationBar = () => {
                                 <Link to="/products" className="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                                     Products
                                 </Link>
-                                <Link to="/profile" className="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                <Link to="/categories" className="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                                     Categories
                                 </Link>
                                 <Link to="/cart" className="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
@@ -43,6 +43,9 @@ const NavigationBar = () => {
                                 </Link>
                                 <Link to="/profile" className="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                                     Profile
+                                </Link>
+                                <Link to="/login" className="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                    Login
                                 </Link>
                             </div>
                         </div>
@@ -57,6 +60,9 @@ const NavigationBar = () => {
                         </Link>
                         <Link to="/products" className="text-gray-900 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
                             Products
+                        </Link>
+                        <Link to="/categories" className="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                            Categories
                         </Link>
                         <Link to="/cart" className="text-gray-900 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
                             Cart

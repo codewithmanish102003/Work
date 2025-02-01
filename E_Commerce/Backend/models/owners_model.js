@@ -8,6 +8,10 @@ const ownerSchema = new mongoose.Schema({
     },
     email: String,
     password: String,
+    role:{
+        type:String,
+        default:"owner"
+    },
     products: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "product",

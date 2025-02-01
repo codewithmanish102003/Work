@@ -5,6 +5,22 @@ const upload = require('../config/multer_config');
 const productModel = require('../models/product_model');
 const isLoggedInUser= require('../middlewares/isLoggedInUser');
 
+router.get('/', async (req, res) => {
+    console.log("product routes GET hitted");
+    
+    try {
+        let products = await productModel.find({});
+        products = products.map(product => {
+            return {
+                ...product._doc,
+                image: product.image ? product.image.toString('base64') : null
+            };
+        });
+        res.json(products);
+    } catch (err) {
+        res.status(500).json({ error: "Something went wrong" });
+    }
+});
 router.post('/create', isLoggedInUser , upload.single('image'), async (req, res) => {
     try {
         let { name, price, discount, bgcolor, panelcolor, textcolor } = req.body;
