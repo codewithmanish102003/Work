@@ -3,7 +3,7 @@ import React from 'react'
 const Header = () => {
   return (
     <div className="font-['helvetica_now_display'] h-10">
-      <nav className="w-full flex justify-between px-5 py-4 bg-amber-300">
+      <nav className="w-full flex justify-between px-5 py-4 bg-teal-400">
         <h3 className="text-xl">💫wayCollections</h3>
         <div className="flex gap-5">
           <a href="/">Home</a>

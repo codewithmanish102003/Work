@@ -10,7 +10,7 @@ const NavigationBar = () => {
     };
 
     return (
-        <nav className="bg-white shadow-md ">
+        <nav className="bg-teal-400 shadow-md ">
             <div className="max-w-full px-2 sm:px-6 lg:px-8">
                 <div className="relative flex items-center justify-between h-16">
                     <div className="flex-shrink-0">

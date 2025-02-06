@@ -35,7 +35,7 @@ const Owner_Register = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8">
+        <div className="mt-10 bg-gray-50 flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8">
             <div className="w-full max-w-4xl flex flex-col lg:flex-row items-center justify-center">
                 <div className="w-full lg:w-3/4 px-4 lg:px-12 mb-8 lg:mb-0">
                     <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900">

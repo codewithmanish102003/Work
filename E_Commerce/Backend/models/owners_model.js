@@ -16,7 +16,14 @@ const ownerSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "product",
     }],
-    picture: String,
+    image: {
+        type: Buffer, // Store image as a Buffer
+    },
+    contact:{
+        type:Number,
+        minLength:10,
+        trim:true
+    },
     gstno: String,
 });
 

@@ -41,9 +41,9 @@ module.exports.registerUser = async (req, res) => {
 module.exports.registerAdmin = async (req, res) => {
     console.log("route /registerAdmin hitted");
     try {
-        let { email, fullname, password, picture, gstno } = req.body;
+        let { email, fullname, password, picture, gstno, contact } = req.body;
 
-        let owner = await ownerModel.findOne({ email: email });
+        let owner = await ownerModel.findOne({ email: email, contact:contact });
         if (owner) {
             req.flash('error_msg', 'Owner already exists');
             return res.status(400).json({ error: 'Owner already exists', flash: req.flash() });
@@ -58,7 +58,8 @@ module.exports.registerAdmin = async (req, res) => {
                     password: hash,
                     fullname,
                     picture,
-                    gstno
+                    gstno,
+                    contact
                 });
 
                 let token = generateToken(owner);
