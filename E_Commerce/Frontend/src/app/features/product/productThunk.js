@@ -1,33 +1,33 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axiosInstance from "../../../services/api/axiosInstance";
+import { fetchAllProducts, fetchProductById } from "../../../services/api/productApi";
 
 // **Fetch all products**
 export const fetchProducts = createAsyncThunk(
   "products/fetchAll",
   async (_, thunkAPI) => {
     try {
-      const response = await axiosInstance.get("/products");
-      return response.data; // Ensure this returns an array
+      const response = await fetchAllProducts();
+      return response;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response?.data || "Failed to fetch products");
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
 // **Fetch single product by ID**
-export const fetchProductById = createAsyncThunk(
+export const fetchProductByIdThunk = createAsyncThunk(
   "products/fetchById",
   async (productId, thunkAPI) => {
     try {
-      const response = await axiosInstance.get(`/products/${productId}`);
-      return response.data;
+      const response = await fetchProductById(productId);
+      return response;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response?.data || "Failed to fetch product");
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
 export default {
   fetchProducts,
-  fetchProductById,
+  fetchProductByIdThunk,
 };
