@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Web Player: Music for everyone</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="utility.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="container flex bg-black">
+        <div class="left ">
+            <div class="close">
+                <img src="Cancel.svg" alt="Close" class="invert">
+            </div>
+            <div class="home rounded bg-grey m1 p1">
+                <div class="logo"><img src="Spotify-logo-black.svg" alt="SpotifyLogo"></div>
+                <ul>
+                    <li><img src="home.svg" alt="home">Home</li>
+                    <li><img src="search.svg" alt="home">Search</li>
+                </ul>
+            </div>
+            <div class="library bg-grey rounded m1 p1">
+
+                <div class="heading">
+                    <img src="playlist.svg" alt="Library">
+                    <h2>Your Library</h2>
+                </div>
+                <div class="songList">
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+        <div class="right rounded bg-grey">
+            <div class="header">
+                <div class="nav">
+                    <div class="hamburgerContainer">
+                        <img width="40px" src="hamburger.svg" alt="Menu" class="invert hamburger">
+                        <img class="mask" src="arrow-left-01-stroke-rounded.svg" alt="Left">
+                        <img class="mask" src="arrow-right-01-stroke-rounded.svg" alt="right">
+                    </div>
+
+                </div>
+                <div class="buttons">
+                    <button class="signupbtn">Sign Up</button>
+                    <button class="loginbtn">Log In</button>
+                </div>
+            </div>
+            <div class="spotify-plalists">
+                <h1>Spotify Playlists</h1>
+                <div class="card-container">
+                    <div class="card">
+                        <img src="ThrowbackThrushday.jpeg" alt="playlist1">
+                        <h2>Happy Hits</h2>
+                        <p>Hits to boost your mood and fill you with happiness</p>
+                    </div>
+                    <div class="card">
+                        <img src="ThrowbackThrushday.jpeg" alt="playlist1">
+                        <h2>Happy Hits</h2>
+                        <p>Hits to boost your mood and fill you with happiness</p>
+                    </div>
+                    <div class="card">
+                        <img src="ThrowbackThrushday.jpeg" alt="playlist1">
+                        <h2>Happy Hits</h2>
+                        <p>Hits to boost your mood and fill you with happiness</p>
+                    </div>
+                    <div class="card">
+                        <img src="ThrowbackThrushday.jpeg" alt="playlist1">
+                        <h2>Happy Hits</h2>
+                        <p>Hits to boost your mood and fill you with happiness</p>
+                    </div>
+                    <div class="card">
+                        <img src="ThrowbackThrushday.jpeg" alt="playlist1">
+                        <h2>Happy Hits</h2>
+                        <p>Hits to boost your mood and fill you with happiness</p>
+                    </div>
+                    <div class="card">
+                        <img src="ThrowbackThrushday.jpeg" alt="playlist1">
+                        <h2>Happy Hits</h2>
+                        <p>Hits to boost your mood and fill you with happiness</p>
+                    </div>
+                </div>
+                <div class="playBar">
+                    <div class="seekbar">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="aboveBar">
+                        <div class="songinfo"></div>
+                        <div class="playButtons">
+                            <img width="40" id="previoues" src="previoues.svg" alt="Previous">
+                            <img width="40" id="play" src="play.svg" alt="Play">
+                            <img width="40" id="next" src="next.svg" alt="Next">
+                        </div>
+                        <div class="timevol">
+                            <div class="songduration"></div>
+                            <div class="volume">
+                                <img width="25" src="volume.svg" alt="volume">
+                                <div class="range">
+                                    <input type="range" name="volume">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
