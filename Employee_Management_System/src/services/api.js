@@ -100,3 +100,13 @@ export const resetPassword = async (token, userData) => {
     throw error;
   }
 };
+
+export const verifyOtp = async (userData) => {
+  try {
+    const response = await axios.post(`${API_URL}/auth/verify-otp`, userData);
+    return response.data;
+  } catch (error) {
+    console.error('Error verifying OTP:', error);
+    throw error;
+  }
+};

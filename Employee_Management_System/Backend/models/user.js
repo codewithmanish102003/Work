@@ -23,6 +23,8 @@ if (!mongoose.models.User) {
 
   // Define User Schema
   const UserSchema = new mongoose.Schema({
+    otp: { type: String },
+    otpExpires: { type: Date },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     firstname: { type: String, required: true },
