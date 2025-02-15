@@ -26,4 +26,24 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// Upload a song
+router.post('/upload', async (req, res) => {
+    const { title, artist, album, url, duration } = req.body;
+
+    const song = new Song({
+        title,
+        artist,
+        album,
+        url,
+        duration
+    });
+
+    try {
+        const newSong = await song.save();
+        res.status(201).json(newSong);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
 module.exports = router;
