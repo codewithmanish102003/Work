@@ -8,33 +8,50 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             string = eval(string);
             input.value = string;
-        } catch {
-            input.value = "Error";
+        } catch (error) {
+            input.value = "Error: Invalid Expression";
             string = "";
         }
     };
 
     const Square = () => {
-        string = eval(string * string)
-        input.value = string
+        try {
+            string = (parseFloat(string) * parseFloat(string)).toString();
+            input.value = string;
+        } catch (error) {
+            input.value = "Error: Invalid Input";
+            string = "";
+        }
     }
 
     const Cube = () => {
-        string = eval(string * string * string)
-        input.value = string
+        try {
+            string = (parseFloat(string) * parseFloat(string) * parseFloat(string)).toString();
+            input.value = string;
+        } catch (error) {
+            input.value = "Error: Invalid Input";
+            string = "";
+        }
     }
-
 
     const Round = () => {
-        string = eval(Math.round(string))
-        input.value = string
+        try {
+            string = Math.round(parseFloat(string)).toString();
+            input.value = string;
+        } catch (error) {
+            input.value = "Error: Invalid Input";
+            string = "";
+        }
     }
 
-
-
     const Percentage = () => {
-        string = eval((string/100)*100)
-        input.value = string
+        try {
+            string = (parseFloat(string) / 100).toString();
+            input.value = string;
+        } catch (error) {
+            input.value = "Error: Invalid Input";
+            string = "";
+        }
     }
 
     const clearInput = () => {
@@ -47,33 +64,26 @@ document.addEventListener('DOMContentLoaded', () => {
         input.value = string;
     };
 
-
-
     buttons.forEach(button => {
         button.addEventListener('click', (event) => {
             let value = event.target.innerHTML;
 
             if (value === '=') {
                 calculate();
-            }  else if (value === "Del") {
-                string=string.substring(0,string.length-1)
-                input.value=string
-            }else if (value === 'AC') {
+            } else if (value === "Del") {
+                string = string.substring(0, string.length - 1);
+                input.value = string;
+            } else if (value === 'AC') {
                 clearInput();
-            }
-            else if (value === "Sqr") {
-                Square()
-            }
-            else if (value === "Cub") {
-                Cube()
-            }
-            else if (value === '%') {
+            } else if (value === "Sqr") {
+                Square();
+            } else if (value === "Cub") {
+                Cube();
+            } else if (value === '%') {
                 Percentage();
-            }
-            else if (value === 'Rnd') {
+            } else if (value === 'Rnd') {
                 Round();
-            }
-            else {
+            } else {
                 updateInput(value);
             }
         });
@@ -87,11 +97,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (key === 'Enter') {
             calculate();
         } else if (key === 'Backspace') {
-            string=string.substring(0,string.length-1)
+            string = string.substring(0, string.length - 1);
             input.value = string;
         } else if (key === 'Escape') {
             clearInput();
         }
     });
 });
-
