@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useState, useEffect } from "react"
 import { useContext } from "react";
 import { AuthContext } from '../../Context/AuthProvider';
+import { toast } from 'react-toastify';
 
 
 
@@ -65,15 +66,17 @@ const CreateTask = () => {
                         Authorization: `Bearer ${user}`
                     }
                 });
-
+                toast.success('Task created successfully!');
                 setEmployees(updatedEmployees);
 
 
             } catch (error) {
+                toast.error('Error creating task');
                 console.error('Error creating task:', error);
             }
         } else {
             alert('Employee not found');
+            toast.error('Employee not found');
         }
         // Reset form fields
         setTaskTitle('');

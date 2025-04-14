@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const API_URL = 'http://localhost:3000/api'; // Adjust the URL as needed
 
@@ -6,9 +7,11 @@ const API_URL = 'http://localhost:3000/api'; // Adjust the URL as needed
 export const registerUser = async (userData) => {
   try {
     const response = await axios.post(`${API_URL}/auth/register`, userData);
+    toast.success('User registered successfully!');
     return response.data;
   } catch (error) {
     console.error('Error registering user:', error);
+    toast.error(error.response?.data?.error || 'Error registering user');
     throw error;
   }
 };
@@ -17,9 +20,11 @@ export const registerUser = async (userData) => {
 export const loginUser = async (userData) => {
   try {
     const response = await axios.post(`${API_URL}/auth/login`, userData);
+    toast.success('Login successful!');
     return response.data;
   } catch (error) {
     console.error('Error logging in user:', error);
+    toast.error(error.response?.data?.error || 'Error logging in user');
     throw error;
   }
 };
@@ -28,9 +33,11 @@ export const loginUser = async (userData) => {
 export const logoutUser = async () => {
   try {
     const response = await axios.post(`${API_URL}/auth/logout`);
+    toast.success('Logout successful!');
     return response.data;
   } catch (error) {
     console.error('Error logging out user:', error);
+    toast.error(error.response?.data?.error || 'Error logging out user');
     throw error;
   }
 };
@@ -45,18 +52,19 @@ export const handleLogin = async (email, password) => {
     return { token, role };
   } catch (error) {
     console.error('Error handling login:', error);
+    toast.error(error.response?.data?.error || 'Error handling login');
     throw error;
   }
 };
 
-//fetch users data
+// Fetch users data
 export const fetchUserData = async () => {
   try {
     const response = await axios.get(`${API_URL}/users`);
-    console.log('User Data:', response.data); // Debugging log
     return response.data;
   } catch (error) {
     console.error('Error fetching user data:', error);
+    toast.error(error.response?.data?.error || 'Error fetching user data');
     throw error;
   }
 };
@@ -66,12 +74,13 @@ export const fetchLogUserData = async (token) => {
   try {
     const response = await axios.get(`${API_URL}/userdata`, {
       headers: {
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
     return response.data;
   } catch (error) {
-    console.error('Error fetching user data:', error);
+    console.error('Error fetching logged-in user data:', error);
+    toast.error(error.response?.data?.error || 'Error fetching user data');
     throw error;
   }
 };
@@ -80,12 +89,11 @@ export const fetchLogUserData = async (token) => {
 export const forgotPassword = async (userData) => {
   try {
     const response = await axios.post(`${API_URL}/auth/forgot-password`, userData);
+    toast.success('OTP sent successfully!');
     return response.data;
   } catch (error) {
     console.error('Error sending reset email:', error);
-    if (error.response) {
-      console.error('Error response:', error.response.data);
-    }
+    toast.error(error.response?.data?.error || 'Error sending reset email');
     throw error;
   }
 };
@@ -94,19 +102,24 @@ export const forgotPassword = async (userData) => {
 export const resetPassword = async (token, userData) => {
   try {
     const response = await axios.post(`${API_URL}/auth/reset-password/${token}`, userData);
+    toast.success('Password reset successfully!');
     return response.data;
   } catch (error) {
     console.error('Error resetting password:', error);
+    toast.error(error.response?.data?.error || 'Error resetting password');
     throw error;
   }
 };
 
+// Verify OTP
 export const verifyOtp = async (userData) => {
   try {
     const response = await axios.post(`${API_URL}/auth/verify-otp`, userData);
+    toast.success('OTP verified successfully!');
     return response.data;
   } catch (error) {
     console.error('Error verifying OTP:', error);
+    toast.error(error.response?.data?.error || 'Error verifying OTP');
     throw error;
   }
 };

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthProvider';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const AcceptTask = ({ data, bgcolor }) => {
   const { user, userData, setUserData } = useContext(AuthContext);
@@ -50,6 +51,7 @@ const AcceptTask = ({ data, bgcolor }) => {
     
     
     handleUpdateTask(updatedTask, updatedTaskCounts);
+    toast.success('Task marked as completed!');
   };
 
   const handleMarkAsFailed = () => {
@@ -61,6 +63,7 @@ const AcceptTask = ({ data, bgcolor }) => {
       failed: userData.taskCounts.failed + 1,
     };
     handleUpdateTask(updatedTask, updatedTaskCounts);
+    toast.success('Task marked as failed!');
   };
 
   return (

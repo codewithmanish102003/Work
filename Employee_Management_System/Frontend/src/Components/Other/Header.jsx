@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Header = () => {
 
@@ -13,6 +14,15 @@ const Header = () => {
 
   const handleLogout = () => {
     logout();
+    toast.success('Logout successful!');
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('userData');
+    localStorage.removeItem('tasks');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userEmail'); 
     navigate('/');
   };
 

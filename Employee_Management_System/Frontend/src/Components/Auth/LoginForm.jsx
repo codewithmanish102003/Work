@@ -1,4 +1,5 @@
 import React from 'react';
+import {toast} from 'react-toastify';
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../../services/api';
@@ -16,6 +17,7 @@ const LoginForm = () => {
         try {
             const response = await loginUser({ email, password });
             login(response.token, response.role);
+            toast.success('Login successful!')
             if (response.role === 'admin') {
                 navigate('/admin');
             } else if (response.role === 'employee') {
@@ -23,6 +25,7 @@ const LoginForm = () => {
             }
         } catch (err) {
             setError('Login failed. Please check your credentials and try again.');
+            toast.error('Login failed. Please check your credentials.');
         }
 
         setEmail('')

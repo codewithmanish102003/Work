@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { forgotPassword, verifyOtp } from '../../services/api';
+import { toast } from 'react-toastify';
 
 const ForgotPasswordForm = () => {
   const [email, setEmail] = useState('');
@@ -15,18 +16,22 @@ const ForgotPasswordForm = () => {
     if (step === 1) {
       try {
         const response = await forgotPassword({ email });
+        toast.success('OTP sent successfully!');
         setMessage(response.message);
         setStep(2);
       } catch (err) {
         setError('Failed to send OTP. Please try again.');
+        toast.error('Failed to send OTP. Please try again.');
       }
     } else if (step === 2) {
       try {
         const response = await verifyOtp({ email, otp });
+        toast.success('OTP verified successfully!');
         setMessage(response.message);
         navigate(`/reset-password/${email}`);
       } catch (err) {
         setError('Invalid OTP. Please try again.');
+        toast.error('Invalid OTP. Please try again.');
       }
     }
   };

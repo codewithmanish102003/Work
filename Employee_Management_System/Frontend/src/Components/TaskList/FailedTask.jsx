@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthProvider';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const FailedTask = ({ data, bgcolor }) => {
   const { user, userData, setUserData } = useContext(AuthContext);
@@ -17,6 +18,7 @@ const FailedTask = ({ data, bgcolor }) => {
           Authorization: `Bearer ${user}`,
         },
       });
+      toast.success('Task revived successfully!');
 
       // Update the task counts
       const updatedTaskCounts = {
@@ -41,6 +43,7 @@ const FailedTask = ({ data, bgcolor }) => {
       setUserData(updatedUserData);
     } catch (error) {
       console.error('Error updating task:', error);
+      toast.error('Failed to revive task');
     }
   };
 

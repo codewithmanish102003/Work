@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../../services/api';
 import { AuthContext } from '../../Context/AuthProvider';
@@ -16,15 +17,18 @@ const SignupForm = () => {
     e.preventDefault();
     if (password !== confirmPassword) {
       setError('Passwords do not match');
+      toast.error('Passwords do not match');
       return;
     }
 
     try {
       const response = await registerUser({ email, password, firstname, role: 'employee' });
       login(response.token, response.role);
+      toast.success('Signup successful!');
       navigate('/');
     } catch (err) {
       setError('Signup failed. Please try again.');
+      toast.error('Signup failed. Please try again.');
     }
   };
 

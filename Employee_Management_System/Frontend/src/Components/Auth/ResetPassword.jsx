@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { resetPassword } from '../../services/api';
+import { toast } from 'react-toastify';
 
 const ResetPasswordForm = () => {
   const [password, setPassword] = useState('');
@@ -14,17 +15,20 @@ const ResetPasswordForm = () => {
     e.preventDefault();
     if (password !== confirmPassword) {
       setError('Passwords do not match');
+      toast.error('Passwords do not match');
       return;
     }
 
     try {
       const response = await resetPassword(token, { password });
+      toast.success('Password reset successful!');
       setMessage(response.message);
       setPassword('');
       setConfirmPassword('');
       setTimeout(() => navigate('/'), 3000);
     } catch (err) {
       setError('Failed to reset password. Please try again.');
+      toast.error('Failed to reset password. Please try again.');
     }
   };
 
