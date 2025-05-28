@@ -93,7 +93,16 @@ nav button {
     height: 7px;
     background-color: rgb(56, 56, 56);
     z-index: 1;
+    width: 100%;
+    margin: 0;
+    border: none;
+    /* Add margin-top to separate from hero section */
+    margin-top: 24px;
+}
 
+.hero {
+    margin-bottom: 0;
+    padding-bottom: 24px;
 }
 
 .btn {
@@ -288,19 +297,215 @@ footer {
 
 
 
-@media (max-width: 600px) {
+/* Responsive styles */
+@media (max-width: 1024px) {
+    nav, .first, footer {
+        max-width: 98vw;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .hero {
+        padding: 0 10px;
+        font-size: 95%;
+        gap: 18px;
+    }
+    .hero> :first-child {
+        font-size: 36px;
+    }
+    .hero> :nth-child(2) {
+        font-size: 20px;
+    }
+    .hero> :nth-child(3) {
+        font-size: 18px;
+    }
+    .hero-button {
+        gap: 12px;
+    }
+    .main input, .faq input {
+        font-size: 15px;
+        padding: 14px 10px 14px 12px;
+        width: 60vw;
+        max-width: 100%;
+    }
+    .btn-red {
+        font-size: 18px;
+        padding: 12px 20px;
+    }
     .first {
-        display: block;
-        margin: auto;
-        max-width: 75vw;
-        justify-content: center;
-        color: white;
-        align-items: center;
-        height: 85vh;
+        flex-direction: column;
+        height: auto;
+        padding: 24px 0;
+        gap: 24px;
     }
+    .secImg img, .secImg video {
+        width: 65vw;
+        min-width: 180px;
+    }
+    .faqbox {
+        font-size: 17px;
+        padding: 14px;
+        max-width: 90vw;
+    }
+    footer {
+        flex-direction: column;
+        gap: 24px;
+        padding: 30px 8px;
+    }
+    .footer-column {
+        margin-bottom: 16px;
+    }
+}
 
-    .first:first-child{
+@media (max-width: 800px) {
+    .main {
+        background-size: cover;
+        height: auto;
+        min-height: 100vh;
+    }
+    .main .box {
+        height: 100%;
+    }
+    .hero {
+        font-size: 90%;
+        gap: 16px;
+        padding: 0 10px;
+        margin-top: 200px; /* Adjust margin to account for nav height */
+    }
+    .first {
+        flex-direction: column;
         text-align: center;
+        height: auto;
+        padding: 30px 5px;
+        gap: 30px;
     }
+    .secImg img, .secImg video {
+        width: 80vw;
+        min-width: 220px;
+    }
+    .faqbox {
+        font-size: 18px;
+        padding: 18px;
+        max-width: 95vw;
+    }
+    footer {
+        flex-direction: column;
+        gap: 30px;
+        padding: 40px 10px;
+    }
+    .footer-column {
+        margin-bottom: 20px;
+    }
+}
 
+@media (max-width: 600px) {
+    nav {
+        display: flex;
+        align-items: center ;
+        justify-content: center;
+        flex-direction: column;
+        height: auto;
+        gap: 10px;
+        padding: 10px 0;
+    }
+    nav img {
+        width: 100px;
+    }
+    .nav-btn {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        padding: 10px 0;
+        gap: 10px;
+        
+        justify-content: center;
+        align-items: center;
+        gap: 10px; /* Reduce gap for mobile */
+    }
+    .nav-btn .btn,
+    .nav-btn .sel-btn,
+    .nav-btn select {
+        font-size: 14px;
+        padding: 8px 12px;
+        min-width: 90px;
+        height: 36px;
+        border-radius: 4px;
+    }
+    .btn-red-sm {
+        font-size: 14px;
+        padding: 8px 16px;
+        min-width: 90px;
+        height: 36px;
+    }
+    nav .sel-btn {
+        width: 100%;
+        padding: 0;
+    }
+    .hero {
+        height: auto;
+        padding: 20px 10px; 
+        gap: 16px;
+        margin-top: 80px;
+
+    }
+    .hero> :first-child {
+        font-size: 28px;
+    }
+    .hero> :nth-child(2) {
+        font-size: 16px;
+    }
+    .hero> :nth-child(3) {
+        font-size: 14px;
+    }
+    .hero-button {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    .main input, .faq input {
+        width: 83vw;
+        max-width: 100%;
+        padding: 12px 10px 12px 10px;
+        font-size: 14px;
+    }
+    .btn-red {
+        width: 100%;
+        padding: 12px 0;
+        font-size: 16px;
+    }
+    .first {
+        flex-direction: column;
+        height: auto;
+        padding: 20px 5px;
+        gap: 20px;
+    }
+    .first>div {
+        text-align: center;
+        font-size: 10px;
+    }
+    .secImg img, .secImg video {
+        width: 95vw;
+        min-width: 120px;
+    }
+    .faq h2 {
+        font-size: 28px;
+    }
+    .faqbox {
+        font-size: 15px;
+        padding: 12px;
+        max-width: 98vw;
+    }
+    .prelog {
+        font-size: 15px;
+        line-height: 28px;
+    }
+    footer {
+        flex-direction: column;
+        padding: 20px 5px;
+        gap: 10px;
+    }
+    .footer-link, .footer-copyright {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
 }
