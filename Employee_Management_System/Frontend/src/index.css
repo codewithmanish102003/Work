@@ -6,7 +6,7 @@
   margin: 0%;
   padding: 0%;
   box-sizing: border-box;
-  color: #fff;
+  color: black;
 }
 
 html,
@@ -15,7 +15,7 @@ body {
   width: 100%;
 }
 body {
-  background-color: #111;
+  background-color: #172554cd ;
 }
 
 #taskList::-webkit-scrollbar {

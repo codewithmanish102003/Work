@@ -1,7 +1,4 @@
-console.log("I am script");
-
 let currentSong = new Audio();
-let Songs = [];
 
 function secondsToMinutesSeconds(seconds) {
     if (isNaN(seconds) || seconds < 0) {
@@ -18,150 +15,112 @@ function secondsToMinutesSeconds(seconds) {
 
 async function getSongs() {
     try {
-        let response = await fetch("http://127.0.0.1:3000/api/songs/");
+        let response = await fetch("https://songsapi-77qx.onrender.com/api/songs/cloud-songs");
         let songs = await response.json();
-        console.log("Fetched songs from API:", songs);
         return songs;
     } catch (error) {
         console.error("Error fetching songs:", error);
     }
 }
 
-document.getElementById("play").disabled = false;
+const playMusic = async (url, title) => {
+    try {
+        currentSong.src = url;
+        currentSong.play()
+            .catch((error) => {
+                console.error("Error playing audio:", error);
+            });
 
-const playMusic = (song, pause = false) => {
-    if (!pause) {
-        currentSong.pause(); // Pause the current song before loading a new one
+        document.querySelector(".songinfo").innerHTML = decodeURI(title);
+        document.querySelector(".songduration").innerHTML = "00:00 / 00:00";
+    } catch (error) {
+        console.error("Error playing song:", error);
     }
-
-    currentSong.src = song.url;
-    currentSong.load(); // Ensure the audio is loaded
-
-    currentSong.onerror = (e) => {
-        console.error("Error loading audio source:", e);
-    };
-
-    currentSong.oncanplay = () => {
-        if (!pause) {
-            currentSong.play().catch((error) => {
-                console.error("Error playing audio:", error);
-            });
-            play.src = "pause.svg";
-        } else {
-            currentSong.play().catch((error) => {
-                console.error("Error playing audio:", error);
-            });
-        }
-    };
-
-    currentSong.ontimeupdate = () => {
-        if (!isNaN(currentSong.duration)) {
-            document.querySelector(".songduration").innerHTML = `${secondsToMinutesSeconds(currentSong.currentTime)}/${secondsToMinutesSeconds(currentSong.duration)}`;
-            document.querySelector(".circle").style.left = (currentSong.currentTime / currentSong.duration) * 100 + "%";
-        }
-    };
-
-    document.querySelector(".songinfo").innerHTML = song.title;
-    document.querySelector(".songduration").innerHTML = "00:00 / 00:00";
-};
+}
 
 async function main() {
-    Songs = await getSongs();
-    console.log("Songs to display:", Songs);
+    let songs = await getSongs();
+    console.log(songs);
 
     // Show all the songs in playlist
     let songUl = document.querySelector(".songList ul");
     songUl.innerHTML = ""; // Clear existing list
-    for (const song of Songs) {
+    for (const song of songs) {
         let li = document.createElement("li");
         li.innerHTML = `
             <img class="invert" src="musical-notes-outline.svg" alt="">
             <div class="info">
                 <div>${song.title}</div>
-                <div>${song.artist}</div>
+                <div>${song.format}</div>
             </div>
             <div class="playnow">
                 <span>Play Now</span>
                 <img class="invert" src="play.svg" alt="play">
             </div>
         `;
-        li.addEventListener("click", () => playMusic(song));
+        li.addEventListener("click", () => playMusic(song.url, song.title));
         songUl.appendChild(li);
     }
-}
 
-// Attach an event listener to each song
-Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach((e) => {
-    e.addEventListener("click", (element) => {
-        console.log(e.querySelector(".info").firstElementChild.innerHTML);
-        playMusic(Songs.find(song => song.title === e.querySelector(".info").firstElementChild.innerHTML.trim()));
+    // Attach event listeners for play, pause, previous, next, etc.
+    play.addEventListener("click", () => {
+        if (currentSong.paused) {
+            currentSong.play();
+            play.src = "pause.svg";
+        } else {
+            currentSong.pause();
+            play.src = "play.svg";
+        }
     });
-});
 
-// Attach event listeners for play, pause, previous, next, etc.
-play.addEventListener("click", () => {
-    if (currentSong.paused) {
-        currentSong.play().catch((error) => {
-            console.error("Error playing audio:", error);
-        });
-        play.src = "pause.svg";
-    } else {
-        currentSong.pause();
-        play.src = "play.svg";
-    }
-});
-
-currentSong.addEventListener("timeupdate", () => {
-    if (!isNaN(currentSong.duration)) {
+    currentSong.addEventListener("timeupdate", () => {
         document.querySelector(".songduration").innerHTML = `${secondsToMinutesSeconds(currentSong.currentTime)}/${secondsToMinutesSeconds(currentSong.duration)}`;
         document.querySelector(".circle").style.left = (currentSong.currentTime / currentSong.duration) * 100 + "%";
-    }
-});
+    });
 
-document.querySelector(".seekbar").addEventListener("click", (e) => {
-    let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
-    document.querySelector(".circle").style.left = percent + "%";
-    if (!isNaN(currentSong.duration)) {
+    document.querySelector(".seekbar").addEventListener("click", e => {
+        let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
+        document.querySelector(".circle").style.left = percent + "%";
         currentSong.currentTime = ((currentSong.duration) * percent) / 100;
-    }
-});
+    });
 
-document.querySelector(".hamburger").addEventListener("click", () => {
-    document.querySelector(".left").style.left = "0";
-});
+    document.querySelector(".hamburger").addEventListener("click", () => {
+        document.querySelector(".left").style.left = "0";
+    });
 
-document.querySelector(".close").addEventListener("click", () => {
-    document.querySelector(".left").style.left = "-130%";
-});
+    document.querySelector(".close").addEventListener("click", () => {
+        document.querySelector(".left").style.left = "-130%";
+    });
 
-previoues.addEventListener("click", () => {
-    currentSong.pause();
-    console.log("Previous clicked");
+    previoues.addEventListener("click", () => {
+        currentSong.pause();
+        console.log("previoes clicked");
 
-    let index = Songs.findIndex(song => song.url === currentSong.src);
-    if ((index - 1) >= 0) {
-        playMusic(Songs[index - 1]);
-    } else if ((index - 1) < 0) {
-        index = (index - 1) + Songs.length;
-        playMusic(Songs[index]);
-    }
-});
+        let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
+        if ((index - 1) >= 0) {
+            playMusic(songs[index - 1].url, songs[index - 1].title);
+        } else if ((index - 1) < 0) {
+            index = (index - 1) + songs.length;
+            playMusic(songs[index].url, songs[index].title);
+        }
+    });
 
-next.addEventListener("click", () => {
-    currentSong.pause();
-    console.log("Next clicked");
+    next.addEventListener("click", () => {
+        currentSong.pause();
+        console.log("next clicked");
 
-    let index = Songs.findIndex(song => song.url === currentSong.src);
-    if ((index + 1) < Songs.length) {
-        playMusic(Songs[index + 1]);
-    } else if ((index + 1) >= Songs.length) {
-        index = Songs.length - (index + 1);
-        playMusic(Songs[index]);
-    }
-});
+        let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
+        if ((index + 1) < songs.length) {
+            playMusic(songs[index + 1].url, songs[index + 1].title);
+        } else if ((index + 1) >= songs.length) {
+            index = songs.length - (index + 1);
+            playMusic(songs[index].url, songs[index].title);
+        }
+    });
 
-document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", () => {
-    currentSong.volume = document.querySelector(".range").getElementsByTagName("input")[0].value / 100;
-});
+    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", () => {
+        currentSong.volume = document.querySelector(".range").getElementsByTagName("input")[0].value / 100;
+    });
+}
 
 main();

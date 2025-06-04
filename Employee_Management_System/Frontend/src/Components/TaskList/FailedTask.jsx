@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../Context/AuthProvider';
 import axios from 'axios';
+import React, { useContext } from 'react';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const FailedTask = ({ data, bgcolor }) => {
   const { user, userData, setUserData } = useContext(AuthContext);
@@ -48,18 +48,18 @@ const FailedTask = ({ data, bgcolor }) => {
   };
 
   return (
-    <div className={`h-full flex-shrink-0 w-[327px] ${bgcolor} rounded-xl px-5 py-6`}>
+    <div className={`h-full flex-shrink-0 w-full sm:w-[327px] ${bgcolor} rounded-xl px-4 sm:px-5 py-4 sm:py-6`}>
       <div className="flex justify-between items-center">
-        <h3 className="bg-red-600 px-3 py-2 text-sm rounded-lg">{data.category}</h3>
-        <h4 className="text-sm font-semibold">{data.taskDate}</h4>
+        <h3 className="bg-blue-900 text-white px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm rounded-lg">{data.category}</h3>
+        <h4 className="text-xs sm:text-sm font-semibold">{data.taskDate}</h4>
       </div>
-      <div className='h-[50%]'>
-      <h1 className="mt-5 font-semibold text-2xl">{data.taskTitle}</h1>
-      <p className="text-sm mt-2">{data.taskDescription}</p>
+      <div className='h-[50%] mt-3 sm:mt-5'>
+        <h1 className="font-semibold text-lg sm:text-2xl">{data.taskTitle}</h1>
+        <p className="text-xs sm:text-sm mt-2">{data.taskDescription}</p>
       </div>
-      <div className='flex justify-between mt-4'>
+      <div className='flex justify-between mt-3 sm:mt-4'>
         <button
-          className='w-full bg-blue-500 py-2 px-3 text-sm rounded-lg'
+          className='w-full bg-blue-900 text-white py-2 sm:py-3 px-2 sm:px-3 text-xs sm:text-sm rounded-lg hover:bg-blue-800 transition-colors'
           onClick={handleReviveTask}
         >
           Revive The Task

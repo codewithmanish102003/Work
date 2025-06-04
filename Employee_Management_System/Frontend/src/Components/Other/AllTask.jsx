@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchUserData } from '../../services/api';
-import { useEffect, useState } from 'react';
 
 const AllTask = () => {
   const [users, setUsers] = useState([]);
+  const [filter, setFilter] = useState('all'); // State for filtering tasks
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,35 +18,85 @@ const AllTask = () => {
     fetchData();
   }, []);
 
-
-  console.log(users);
-  
-
   // Filter out admin from authData
   const employees = users.filter(user => user.role !== 'admin');
 
   return (
-    <div className='bg-[#1c1c1c] p-5 mt-5 rounded'>
-      <div className='bg-red-400 mb-2 py-2 px-4 flex justify-between rounded'>
-        <h2 className='w-1/5 text-lg font-medium '>Employee Name</h2>
-        <h3 className='w-1/5 text-lg font-medium '>New Task</h3>
-        <h5 className='w-1/5 text-lg font-medium '>Active Task</h5>
-        <h5 className='w-1/5 text-lg font-medium '>Completed</h5>
-        <h5 className='w-1/5 text-lg font-medium '>Failed</h5>
+    <div className="bg-gray-100 p-5 m-5 border-2 rounded">
+      {/* Filter Dropdown */}
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-lg sm:text-xl font-semibold ">All Tasks</h1>
+        <select
+          value={filter}
+          onChange={e => setFilter(e.target.value)}
+          className="bg-blue-700 text-white text-sm sm:text-base py-2 px-4 rounded"
+        >
+          <option value="all">All Tasks</option>
+          <option value="newTask">New Task</option>
+          <option value="active">Active Task</option>
+          <option value="completed">Completed</option>
+          <option value="failed">Failed</option>
+        </select>
       </div>
-      <div id="taskList" className='h-[80%] overflow-auto'>
+
+      {/* Header Row */}
+      <div className="bg-blue-900  mb-2 py-2 px-4 grid grid-cols-2 sm:grid-cols-5 gap-2 rounded">
+        <h2 className="text-sm sm:text-lg font-medium text-white">Employee Name</h2>
+        <h3 className={`text-sm sm:text-lg font-medium text-white ${filter === 'newTask' ? 'block' : 'hidden'} sm:block`}>
+          New Task
+        </h3>
+        <h5 className={`text-sm sm:text-lg font-medium text-white ${filter === 'active' ? 'block' : 'hidden'} sm:block`}>
+          Active Task
+        </h5>
+        <h5 className={`text-sm sm:text-lg font-medium text-white ${filter === 'completed' ? 'block' : 'hidden'} sm:block`}>
+          Completed
+        </h5>
+        <h5 className={`text-sm sm:text-lg font-medium text-white ${filter === 'failed' ? 'block' : 'hidden'} sm:block`}>
+          Failed
+        </h5>
+      </div>
+
+      {/* Employee Task List */}
+      <div id="taskList" className="h-[80%] overflow-auto">
         {employees.map((e, idx) => (
-          <div key={idx} id="taskList" className='border-2 border-emerald-500 mb-2 py-2 px-4 flex justify-between rounded'>
-            <h2 className='w-1/5 text-lg font-medium'>{e.firstname}</h2>
-            <h3 className='w-1/5 text-lg font-medium text-blue-600 '>{e.taskCounts.newTask}</h3>
-            <h5 className='w-1/5 text-lg font-medium text-yellow-500 '>{e.taskCounts.active}</h5>
-            <h5 className='w-1/5 text-lg font-medium text-green-600 '>{e.taskCounts.completed}</h5>
-            <h5 className='w-1/5 text-lg font-medium text-red-600 '>{e.taskCounts.failed}</h5>
+          <div
+            key={idx}
+            className="border-2 border-blue-900 mb-2 py-2 px-4 grid grid-cols-2 sm:grid-cols-5 gap-2 rounded"
+          >
+            <h2 className="text-sm sm:text-lg font-medium">{e.firstname}</h2>
+            <h3
+              className={`text-sm sm:text-lg font-medium  ${
+                filter === 'newTask' ? 'block' : 'hidden'
+              } sm:block`}
+            >
+              {e.taskCounts.newTask}
+            </h3>
+            <h5
+              className={`text-sm sm:text-lg font-medium  ${
+                filter === 'active' ? 'block' : 'hidden'
+              } sm:block`}
+            >
+              {e.taskCounts.active}
+            </h5>
+            <h5
+              className={`text-sm sm:text-lg font-medium  ${
+                filter === 'completed' ? 'block' : 'hidden'
+              } sm:block`}
+            >
+              {e.taskCounts.completed}
+            </h5>
+            <h5
+              className={`text-sm sm:text-lg font-medium  ${
+                filter === 'failed' ? 'block' : 'hidden'
+              } sm:block`}
+            >
+              {e.taskCounts.failed}
+            </h5>
           </div>
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AllTask
+export default AllTask;

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../Context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const Header = () => {
 
@@ -27,11 +27,28 @@ const Header = () => {
   };
 
 
+
   return (
-    <div className='flex items-end justify-between'>
-      <h1 className="text-2xl font-medium">Hello <br /><span className='text-3xl font-semibold'>{role === 'admin' ? "Admin" : userData?.firstname
-}👋</span></h1>
-      <button onClick={handleLogout} className='bg-red-600 text-lg font-medium text-white px-5 py-3 rounded-lg'>Logout</button>
+    <div className='flex items-center justify-between border-b-2 pb-3 md:pb-5 px-3 md:px-5'>
+      <div>
+        <h1 className="text-xl md:text-2xl font-medium">Hello <br /><span className='text-2xl md:text-3xl font-semibold'>{role === 'admin' ? "Admin" : userData?.firstname}👋</span></h1>
+      </div>
+      <div className="flex gap-2 md:gap-4">
+        {role === 'admin' && (
+          <button 
+            onClick={() => navigate('/add-user')} 
+            className='bg-blue-900 text-sm md:text-lg font-medium text-white px-2 md:px-4 py-1.5 md:py-2 rounded-lg'
+          >
+            Add Employee
+          </button>
+        )}
+        <button 
+          onClick={handleLogout} 
+          className='bg-blue-900 text-sm md:text-lg font-medium text-white px-2 md:px-4 py-1.5 md:py-2 rounded-lg'
+        >
+          Logout
+        </button>
+      </div>  
     </div>
   )
 }
