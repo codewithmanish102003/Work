@@ -1,0 +1,21 @@
+{
+  "name": "bhailang-project",
+  "version": "1.0.0",
+  "description": "A BhaiLang programming project",
+  "main": "index.bhai",
+  "scripts": {
+    "start": "bhailang index.bhai",
+    "run": "bhailang",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": ["bhailang", "programming", "language"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bhailang": "^0.1.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
